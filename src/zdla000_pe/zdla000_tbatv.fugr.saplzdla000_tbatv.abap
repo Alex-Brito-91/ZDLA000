@@ -1,4 +1,4 @@
-* regenerated at 10.10.2024 09:13:30
+* regenerated at 01.11.2024 09:43:33
 *******************************************************************
 *   System-defined Include-files.                                 *
 *******************************************************************
@@ -19,3 +19,13 @@
   INCLUDE LSVIMFXX                                . " subprograms
   INCLUDE LSVIMOXX                                . " PBO modules
   INCLUDE LSVIMIXX                                . " PAI modules
+
+*INCLUDE lzdla000_tbatvf01.
+
+*INCLUDE lzdla000_tbatvf04.
+
+*INCLUDE lzdla000_tbatvf02.
+
+INCLUDE lzdla000_tbatvf01.
+
+INCLUDE lzdla000_tbatvf02.

@@ -1,6 +1,6 @@
 *---------------------------------------------------------------------*
 *    view related data declarations
-*   generation date: 10.10.2024 at 09:13:30
+*   generation date: 01.11.2024 at 09:43:32
 *   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 *...processing: ZDLA000_TBATV...................................*

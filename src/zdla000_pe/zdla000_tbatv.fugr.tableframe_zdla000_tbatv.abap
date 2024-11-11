@@ -1,6 +1,6 @@
 *---------------------------------------------------------------------*
 *    program for:   TABLEFRAME_ZDLA000_TBATV
-*   generation date: 10.10.2024 at 09:13:30
+*   generation date: 01.11.2024 at 10:28:51
 *   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 FUNCTION TABLEFRAME_ZDLA000_TBATV      .

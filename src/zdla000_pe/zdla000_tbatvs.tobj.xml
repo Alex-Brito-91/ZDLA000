@@ -38,6 +38,18 @@
      <BASTAB>X</BASTAB>
      <FLAG>X</FLAG>
     </TVDIR>
+    <TVIMF>
+     <TVIMF>
+      <TABNAME>ZDLA000_TBATV</TABNAME>
+      <EVENT>05</EVENT>
+      <FORMNAME>CREATE_REGISTER</FORMNAME>
+     </TVIMF>
+     <TVIMF>
+      <TABNAME>ZDLA000_TBATV</TABNAME>
+      <EVENT>21</EVENT>
+      <FORMNAME>MODIFY_REGISTER</FORMNAME>
+     </TVIMF>
+    </TVIMF>
    </TOBJ>
   </asx:values>
  </asx:abap>
