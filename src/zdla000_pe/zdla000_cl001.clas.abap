@@ -1,32 +1,33 @@
-class ZDLA000_CL001 definition
-  public
-  abstract
-  create public .
+CLASS zdla000_cl001 DEFINITION
+  PUBLIC
+  ABSTRACT
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  data LV_TABLE type STRING .
+    DATA lv_table TYPE string .
 
-  methods CONSTRUCTOR
-    importing
-      !IV_TABLE type STRING .
-  methods CREATE
-    changing
-      !CS_DATA type ANY .
-  methods READ
-    exporting
-      !ET_DATA type ANY TABLE .
-  methods UPDATE
-    changing
-      !CS_DATA type ANY .
-  methods DELETE
-    importing
-      !IS_DATA type ANY .
-  methods VALIDATE
-    importing
-      !IS_DATA type ANY .
-protected section.
-private section.
+    METHODS constructor
+      IMPORTING
+        !iv_table TYPE string .
+    METHODS create
+      CHANGING
+        !cs_data TYPE any .
+    METHODS read
+      EXPORTING
+        !et_data TYPE ANY TABLE .
+    METHODS update
+      CHANGING
+        !cs_data TYPE any .
+    METHODS delete
+      IMPORTING
+        !is_data TYPE any .
+    METHODS validate
+      IMPORTING
+        !is_data TYPE any .
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
@@ -34,26 +35,53 @@ ENDCLASS.
 CLASS ZDLA000_CL001 IMPLEMENTATION.
 
 
-  method CONSTRUCTOR.
-  endmethod.
+  METHOD constructor.
+
+    me->lv_table = iv_table.
+
+  ENDMETHOD.
 
 
-  method CREATE.
-  endmethod.
+  METHOD create.
+
+    ASSIGN COMPONENT `ID` OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_id>).
+    IF <fs_id> IS ASSIGNED.
+      <fs_id> = cl_system_uuid=>create_uuid_x16_static( ).
+    ENDIF.
+
+    ASSIGN COMPONENT `DATA_MATRIC` OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_data_matric>).
+    IF <fs_data_matric> IS ASSIGNED AND <fs_data_matric> IS INITIAL.
+      <fs_data_matric> = sy-datum.
+    ENDIF.
+
+    ASSIGN COMPONENT `CRIADO_EM` OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_criado_em>).
+    GET TIME STAMP FIELD DATA(lv_timestampl).
+    IF <fs_criado_em> IS ASSIGNED.
+      <fs_criado_em> = lv_timestampl.
+    ENDIF.
+
+    ASSIGN COMPONENT `CRIADO_POR` OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_criado_por>).
+    IF <fs_criado_por> IS ASSIGNED.
+      <fs_criado_por> = sy-uname.
+    ENDIF.
+
+    MODIFY (lv_table) FROM cs_data.
+
+  ENDMETHOD.
 
 
-  method DELETE.
-  endmethod.
+  METHOD delete.
+  ENDMETHOD.
 
 
-  method READ.
-  endmethod.
+  METHOD read.
+  ENDMETHOD.
 
 
-  method UPDATE.
-  endmethod.
+  METHOD update.
+  ENDMETHOD.
 
 
-  method VALIDATE.
-  endmethod.
+  METHOD validate.
+  ENDMETHOD.
 ENDCLASS.
