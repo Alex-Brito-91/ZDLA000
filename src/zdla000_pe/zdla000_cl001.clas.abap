@@ -69,18 +69,19 @@ CLASS ZDLA000_CL001 IMPLEMENTATION.
 
   ENDMETHOD.
 
-
-  METHOD delete.
-  ENDMETHOD.
-
-
   METHOD read.
   ENDMETHOD.
-
 
   METHOD update.
   ENDMETHOD.
 
+  METHOD delete.
+
+    ASSIGN COMPONENT `ID` OF STRUCTURE is_data TO FIELD-SYMBOL(<fs_delete_id>).
+
+    DELETE (lv_table) FROM is_data.
+
+  ENDMETHOD.
 
   METHOD validate.
   ENDMETHOD.
