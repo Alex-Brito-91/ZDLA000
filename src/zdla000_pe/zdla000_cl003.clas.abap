@@ -1,38 +1,38 @@
-CLASS zdla000_cl002 DEFINITION
+CLASS zdla000_cl003 DEFINITION
   PUBLIC
   INHERITING FROM zdla000_cl001
   FINAL
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-
-    METHODS update
-        REDEFINITION .
+    METHODS update REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zdla000_cl002 IMPLEMENTATION.
+
+
+CLASS zdla000_cl003 IMPLEMENTATION.
 
   METHOD update.
 
     ASSIGN COMPONENT `ID` OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_modificado_id>).
 
     SELECT SINGLE *
-      FROM zdla000_tbpes
-      INTO @DATA(lt_pes)
+      FROM zdla000_tbatv
+      INTO @DATA(ls_atv)
       WHERE id EQ @<fs_modificado_id>.
 
     DO.
-      ASSIGN COMPONENT sy-index OF STRUCTURE lt_pes TO FIELD-SYMBOL(<fs_lt_pes>).
-      ASSIGN COMPONENT sy-index OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_cs_data>).
+      ASSIGN COMPONENT sy-index OF STRUCTURE ls_atv TO FIELD-SYMBOL(<fs_atv>).
+      ASSIGN COMPONENT sy-index OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_data>).
 
       IF sy-subrc <> 0.
         EXIT.
       ENDIF.
 
-      IF <fs_cs_data> IS INITIAL.
-        <fs_cs_data> = <fs_lt_pes>.
+      IF <fs_data> IS INITIAL.
+        <fs_data> = <fs_atv>.
       ENDIF.
     ENDDO.
 
@@ -45,5 +45,9 @@ CLASS zdla000_cl002 IMPLEMENTATION.
 
     MODIFY (lv_table) FROM cs_data.
 
+    INCLUDE zi_update_media.
+
+    CLEAR ls_atv.
   ENDMETHOD.
+
 ENDCLASS.

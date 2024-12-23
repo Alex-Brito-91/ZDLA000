@@ -45,7 +45,7 @@ CLASS ZDLA000_CL001 IMPLEMENTATION.
   METHOD create.
 
     ASSIGN COMPONENT `ID` OF STRUCTURE cs_data TO FIELD-SYMBOL(<fs_id>).
-    IF <fs_id> IS ASSIGNED.
+    IF <fs_id> IS ASSIGNED AND <fs_id> IS INITIAL.
       <fs_id> = cl_system_uuid=>create_uuid_x16_static( ).
     ENDIF.
 
